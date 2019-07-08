@@ -1,14 +1,16 @@
+# -*- coding: utf-8 -*-
+
 import glob
 import json
 import os
 
-from orbis import app
-import orbis_plugin_aggregation_dbpedia_entity_types as dbpedia_entity_types
-from orbis.plugins.aggregation import monocle
-from orbis.core.aggregation import AggregationBaseClass
+from orbis_eval import app
+from orbis_plugin_aggregation_dbpedia_entity_types import Main as dbpedia_entity_types
+from orbis_plugin_aggregation_monocle import Main as monocle
+from orbis_eval.core.aggregation import AggregationBaseClass
 
 
-class LocalCacheAggregation(AggregationBaseClass):
+class Main(AggregationBaseClass):
 
     def run(self):
         computed_path = self.config['computed_path']
@@ -16,7 +18,7 @@ class LocalCacheAggregation(AggregationBaseClass):
         mapping = self.data['mapping']
         filter_ = self.data['filter']
         computed = {}
-        app.logger.debug(f"Serching for cache files in {computed_path}")
+        app.logger.debug(f"Searching for cache files in {computed_path}")
         for file_dir in glob.glob(os.path.join(computed_path, '*.json')):
             file_number = file_dir.split('/')[-1].split('.')[0]
             computed[file_number] = []

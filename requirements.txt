@@ -1,2 +1,0 @@
-orbis>=2.0
-orbis_plugin_aggregation_dbpedia_entity_types>=1.0
