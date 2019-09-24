@@ -9,6 +9,9 @@ from orbis_plugin_aggregation_dbpedia_entity_types import Main as dbpedia_entity
 from orbis_plugin_aggregation_monocle import Main as monocle
 from orbis_eval.core.base import AggregationBaseClass
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 class Main(AggregationBaseClass):
 
@@ -18,12 +21,12 @@ class Main(AggregationBaseClass):
         mapping = self.data['mapping']
         filter_ = self.data['filter']
         computed = {}
-        app.logger.debug(f"Searching for cache files in {computed_path}")
+        logger.debug(f"Searching for cache files in {computed_path}")
         for file_dir in glob.glob(os.path.join(computed_path, '*.json')):
             file_number = file_dir.split('/')[-1].split('.')[0]
             computed[file_number] = []
             with open(file_dir) as open_file:
-                app.logger.debug(f"Opening {file_dir}")
+                logger.debug(f"Opening {file_dir}")
                 items = json.load(open_file)
 
                 if items:
