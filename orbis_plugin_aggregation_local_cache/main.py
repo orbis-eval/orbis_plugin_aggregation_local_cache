@@ -5,8 +5,8 @@ import json
 import os
 
 from orbis_eval.core import app
-from orbis_plugin_aggregation_dbpedia_entity_types import Main as dbpedia_entity_types
-from orbis_plugin_aggregation_monocle import Main as monocle
+from orbis_eval.plugins.orbis_plugin_aggregation_dbpedia_entity_types import Main as dbpedia_entity_types
+from orbis_eval.plugins.orbis_plugin_aggregation_monocle import Main as monocle
 from orbis_eval.core.base import AggregationBaseClass
 
 import logging
